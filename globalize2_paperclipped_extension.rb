@@ -13,6 +13,16 @@ class Globalize2PaperclippedExtension < Radiant::Extension
   # end
   
   def activate
+    throw "Globalize2 Extension must be loaded before Globalize2Paperclipped" unless defined?(Globalize2Extension)
+    throw "Paperclipped Extension must be loaded before Globalize2Paperclipped" unless defined?(PaperclippedExtension)
+    
+    PaperclippedExtension.admin.asset.index.add :top, 'admin/shared/change_locale_admin'
+    PaperclippedExtension.admin.asset.edit.add :main, 'admin/shared/change_asset_locale', :before => 'edit_form'  
+    
+    PaperclippedExtension.admin.asset.index.add :thead, 'admin/shared/globalize_th'
+    PaperclippedExtension.admin.asset.index.add :tbody, 'admin/shared/globalize_asset_td'
+    
+    Asset.send(:translates, *[:title, :caption])
   end
   
   def deactivate
