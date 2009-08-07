@@ -23,6 +23,11 @@ class Globalize2PaperclippedExtension < Radiant::Extension
     PaperclippedExtension.admin.asset.index.add :tbody, 'admin/shared/globalize_asset_td'
     
     Asset.send(:translates, *[:title, :caption])
+    
+    Asset.send(:include, Globalize2Paperclipped::AssetExtensions)
+    Page.send(:include, Globalize2Paperclipped::Globalize2PaperclippedTags)
+    Page.send(:include, Globalize2Paperclipped::PageExtensions)
+    
   end
   
   def deactivate
