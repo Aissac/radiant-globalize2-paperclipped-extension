@@ -14,14 +14,7 @@ namespace :radiant do
       
       desc "Copies public assets of the Globalize2 Paperclipped to the instance public/ directory."
       task :update => :environment do
-        is_svn_or_dir = proc {|path| path =~ /\.svn/ || File.directory?(path) }
-        puts "Copying assets from Globalize2PaperclippedExtension"
-        Dir[Globalize2PaperclippedExtension.root + "/public/**/*"].reject(&is_svn_or_dir).each do |file|
-          path = file.sub(Globalize2PaperclippedExtension.root, '')
-          directory = File.dirname(path)
-          mkdir_p RAILS_ROOT + directory, :verbose => false
-          cp file, RAILS_ROOT + path, :verbose => false
-        end
+        puts "Globalize2Paperclipped Extension has no public assets. Nothing done."
       end  
     end
   end
