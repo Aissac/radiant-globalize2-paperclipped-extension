@@ -4,6 +4,7 @@ module Globalize2Paperclipped
       base.class_eval do
         alias_method_chain 'tag:if_assets', :globalize
         alias_method_chain 'tag:unless_assets', :globalize
+        alias_method_chain 'tag:assets:each', :globalize
       end
     end
   end

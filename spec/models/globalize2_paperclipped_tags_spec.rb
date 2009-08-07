@@ -44,14 +44,14 @@ describe "Globalize2Paperclipped tags" do
   describe "<r:assets:if_translation_asset />" do
     it "expands if the asset is translated" do
       @page.
-        should render("<r:assets:each><r:if_translation_asset><r:title /></r:if_translation_asset></r:assets:each>").
+        should render("<r:assets:each locale='false'><r:if_translation_asset><r:title /></r:if_translation_asset></r:assets:each>").
         as(/Picture \d/)
     end
     
     it "does not expand if the asset is not translated" do
       switch_locale("ro") do
         @page.
-          should render("<r:assets:each><r:if_translation_asset><r:title /></r:if_translation_asset></r:assets:each>").
+          should render("<r:assets:each locale='false'><r:if_translation_asset><r:title /></r:if_translation_asset></r:assets:each>").
           as("")
       end
     end
@@ -61,15 +61,29 @@ describe "Globalize2Paperclipped tags" do
     it "expands if the asset is no translated" do
       switch_locale("ro") do
         @page.
-          should render("<r:assets:each><r:unless_translation_asset>test</r:unless_translation_asset></r:assets:each>").
+          should render("<r:assets:each locale='false'><r:unless_translation_asset>test</r:unless_translation_asset></r:assets:each>").
           as("test")
       end
     end
     
     it "does not expand if the asset is translated" do
       @page.
-        should render("<r:assets:each><r:unless_translation_asset>test</r:unless_translation_asset></r:assets:each>").
+        should render("<r:assets:each locale='false'><r:unless_translation_asset>test</r:unless_translation_asset></r:assets:each>").
         as("")
+    end
+  end
+  
+  describe "<r:assets:each_with_globalize />" do
+    it "renders only the assets translated for the current locale if 'locale' attribute is not set to 'false'" do
+      @page.
+        should render("<r:assets:each><r:title /></r:assets:each>").
+        as(/Picture\d/)
+    end
+    
+    it "renders all the attached assets if 'locale' attribute is set to 'false'" do
+      @page.
+        should render("<r:assets:each locale='false'><r:title /></r:assets:each>").
+        as(/Picture \d/)
     end
   end
   

@@ -6,6 +6,13 @@ Factory.define(:asset) do |f|
   f.asset_file_size 44760
 end
 
+Factory.define(:romanian_asset_translation, :class => "asset_translation") do |f|
+  f.locale "ro"
+  f.association :asset, :factory => :asset
+  f.title "Imagine"
+  f.caption "Imagine caption"
+end
+
 Factory.define(:page) do |f|
   f.sequence(:title) { |i| "Page #{i}"}
   f.slug { |a| a.title.downcase.gsub(/[^-a-z0-9~\s\.:;+=_]/, '').gsub(/[\s\.:;=+]+/, '-') }
