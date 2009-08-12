@@ -19,6 +19,9 @@ class Globalize2PaperclippedExtension < Radiant::Extension
     Page.send(:include, Globalize2Paperclipped::Globalize2PaperclippedTags)
     Page.send(:include, Globalize2Paperclipped::PageExtensions)
     
+    #compatibility
+    Asset.send(:include, Globalize2Paperclipped::Compatibility::TinyPaper::AssetExtensions) if defined?(TinyPaperExtension)
+
   end
   
   def deactivate
