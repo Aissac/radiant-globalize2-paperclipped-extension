@@ -6,7 +6,7 @@ About
 
 An extension by [Aissac][aissac] that helps translating [Radiant Paperclipped][pc] Assets using [Radiant Globalize2 Extension][arg2].
 
-Tested on Radiant 0.8 and 0.9 RC1.
+Requires Radiant >= 0.8. Tested on Radiant 0.9 RC1.
 
 Features
 ---
@@ -25,7 +25,7 @@ The [Paperclipped Extension][pc]:
 
 And the [Radiant Globalize2 Extension][arg2]
 
-    git clone git://github.com/Aissac/radiant-globalize2.git vendor/extensions/globalize2
+    git clone git://github.com/Aissac/radiant-globalize2-extension.git vendor/extensions/globalize2
 
 Run the rake tasks, first for Paperclipped, then for Globalize 2:
   
@@ -37,13 +37,21 @@ Run the rake tasks, first for Paperclipped, then for Globalize 2:
 
 Install the Radiant Globalize2-Paperclipped Extension
 
-    git submodule add git://github.com/Aissac/radiant-globalize2-paperclipped.git vendor/extensions/globalize2_paperclipped
+    git clone git://github.com/Aissac/radiant-globalize2-paperclipped-extension.git vendor/extensions/globalize2_paperclipped
     
 And run the rake tasks:
 
     rake radiant:extensions:globalize2_paperclipped:migrate
     rake radiant:extensions:globalize2_paperclipped:update
-    
+
+###Note
+
+The git branches hold stable versions of the extension for older version of Radiant CMS. To checkout one of these branches:
+
+    git clone git://github.com/Aissac/radiant-globalize2-paperclipped-extension.git vendor/extensions/globalize2_paperclipped
+    cd vendor/extensions/globalize2_paperclipped
+    git checkout -b <branch-name> origin/<remote-branch-name>
+
 Configuration
 ---
 
