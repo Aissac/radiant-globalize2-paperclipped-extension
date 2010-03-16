@@ -8,11 +8,29 @@ An extension by [Aissac][aissac] that helps translating [Radiant Paperclipped][p
 
 Requires Radiant >= 0.8. Tested on Radiant 0.9 RC1.
 
+Check out a screencast [presenting the Globalize2 extension][rcp] and one on [compatibility issues][rcc], which covers this extension.
+
 Features
 ---
 
 * Provides the ability to translate Paperclipped assets (title and caption) using the Radiant admin interface.
 * Altered Paperclipped Radius Tags which take into account the locale
+
+Important Notice!
+---
+
+The git branches of this repository hold stable versions of the extension for older versions of Radiant CMS. For example the _0.8_ branch is compatible with Radiant 0.8. 
+
+To checkout one of these branches:
+
+    git clone git://github.com/Aissac/radiant-globalize2-paperclipped-extension.git vendor/extensions/globalize2_paperclipped
+    cd vendor/extensions/globalize2_paperclipped
+    git checkout -b <branch-name> origin/<remote-branch-name>
+
+As an example, if you're working on Radiant 0.8 you will need to checkout the 0.8 branch:
+    
+    cd vendor/extensions/globalize2_paperclipped
+    git checkout -b my_branch origin/0.8
 
 Installation
 ---
@@ -43,14 +61,6 @@ And run the rake tasks:
 
     rake radiant:extensions:globalize2_paperclipped:migrate
     rake radiant:extensions:globalize2_paperclipped:update
-
-###Note
-
-The git branches hold stable versions of the extension for older version of Radiant CMS. To checkout one of these branches:
-
-    git clone git://github.com/Aissac/radiant-globalize2-paperclipped-extension.git vendor/extensions/globalize2_paperclipped
-    cd vendor/extensions/globalize2_paperclipped
-    git checkout -b <branch-name> origin/<remote-branch-name>
 
 Configuration
 ---
@@ -100,3 +110,5 @@ Contributors
 
 [cd]: http://twitter.com/cristi_duma
 [ih]: http://twitter.com/ihoka
+[rcp]: http://blog.aissac.ro/2009/10/25/episode-2-radiant-globalize2-extension/
+[rcc]: http://blog.aissac.ro/2009/11/02/episode-3-radiant-globalize2-compatibility-issues/
